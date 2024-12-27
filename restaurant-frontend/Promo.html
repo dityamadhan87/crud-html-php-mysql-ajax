@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./Promo.css">
+</head>
+<body>
+    <form id="promoForm" action="../admin-backend/AdminPromo.php" method="get">
+        <label>Promo Type</label>
+        <select name="promoType">
+            <option value="delivery">DELIVERY</option>
+            <option value="discount">DISCOUNT</option>
+            <option value="cashback">CASHBACK</option>
+        </select>
+        <label>Promo Code</label>
+        <input type="text" name="promoCode">
+        <label>Start Date</label>
+        <input type="date" name="startDate">
+        <label>End Date</label>
+        <input type="date" name="endDate">
+        <label>Percent Discount</label>
+        <input type="text" name="percentDiscount">
+        <label>Max Discount</label>
+        <input type="number" name="maxDiscount">
+        <label>Min Purchase</label>
+        <input type="number" name="minPurchase">
+        <button type="submit" name="action" value="create">Create</button>
+        <button type="submit" name="action" value="delete">Delete</button>
+        <button type="submit" name="action" value="update">Update</button>
+        <button type="submit" name="action" value="read">Read</button>
+    </form>
+</body>
+</html>

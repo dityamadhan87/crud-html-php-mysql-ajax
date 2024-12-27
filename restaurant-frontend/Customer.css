@@ -1,0 +1,13 @@
+body{
+    display: flex;
+}
+
+#customerForm {
+    display: flex;
+    flex-direction: column;
+}
+
+form input, form select, form button {
+    margin: 10px 0;
+    width: 80%;
+}

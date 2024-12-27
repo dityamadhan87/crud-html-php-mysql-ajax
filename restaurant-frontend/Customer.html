@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer</title>
+    <link rel="stylesheet" href="./Customer.css">
+</head>
+<body>
+    <form id="customerForm" action="../admin-backend/AdminCustomer.php" method="get">
+        <label>Customer Type</label>
+        <select name="customerType">
+            <option value="guest">GUEST</option>
+            <option value="member">MEMBER</option>
+        </select>
+        <label>Customer ID</label>
+        <input type="text" name="customerId">
+        <label>Customer Name</label>
+        <input type="text" name="customerName">
+        <label>Member Date</label>
+        <input type="date" name="memberDate">
+        <label>Opening Balance</label>
+        <input type="number" name="openingBalance">
+        <button type="submit" name="action" value="create">Create</button>
+        <button type="submit" name="action" value="delete">Delete</button>
+        <button type="submit" name="action" value="update">Update</button>
+        <button type="submit" name="action" value="read">Read</button>
+    </form>
+</body>
+</html>
