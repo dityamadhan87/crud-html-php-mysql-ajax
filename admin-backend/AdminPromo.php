@@ -2,14 +2,14 @@
 require_once '../AccessDatabase.php';
 global $pdo;
 
-$promoType = $_GET['promoType'];
-$promoCode = $_GET['promoCode'];
-$startDate = $_GET['startDate'];
-$endDate = $_GET['endDate'];
-$percentDiscount = $_GET['percentDiscount'];
-$maxDiscount = $_GET['maxDiscount'];
-$minPurchase = $_GET['minPurchase'];
-$action = $_GET['action'];
+$promoType = $_POST['promoType'] ?? null;
+$promoCode = $_POST['promoCode'] ?? null;
+$startDate = $_POST['startDate'] ?? null;
+$endDate = $_POST['endDate'] ?? null;
+$percentDiscount = $_POST['percentDiscount'] ?? null;
+$maxDiscount = $_POST['maxDiscount'] ?? null;
+$minPurchase = $_POST['minPurchase'] ?? null;
+$action = $_GET['action'] ?? $_POST['action'] ?? null;
 
 try {
     if($action == 'create'){
@@ -24,7 +24,7 @@ try {
             'maxDiscount' => $maxDiscount,
             'minPurchase' => $minPurchase
         ]);
-        echo "Promo added successfully";
+        echo json_encode(['status' => 'success', 'message' => 'Promo added successfully']);
     } else if($action == 'update'){
         $sql = "UPDATE promo SET promoType = :promoType, startDate = :startDate, endDate = :endDate, percentDiscount = :percentDiscount, maxDiscount = :maxDiscount, minPurchase = :minPurchase WHERE promoCode = :promoCode";
         $stmt = $pdo->prepare($sql);
@@ -37,45 +37,19 @@ try {
             'minPurchase' => $minPurchase,
             'promoCode' => $promoCode
         ]);
-        echo "Promo updated successfully";
+        echo json_encode(['status' => 'success', 'message' => 'Promo updated successfully']);
     } else if($action == 'delete'){
         $sql = "DELETE FROM promo WHERE promoCode = :promoCode";
         $stmt = $pdo->prepare($sql);
         $stmt->execute(['promoCode' => $promoCode]);
-        echo "Promo deleted successfully";
+        echo json_encode(['status' => 'success', 'message' => 'Promo deleted successfully']);
     } else if($action == 'read'){
         $sql = "SELECT * FROM promo";
         $stmt = $pdo->query($sql);
         $promos = $stmt->fetchAll(PDO::FETCH_OBJ);
-        echo "<table border='1' style='width: 50%;'>
-                <thead>
-                    <tr>
-                        <th>Promo Type</th>
-                        <th>Promo Code</th>
-                        <th>Start Date</th>
-                        <th>End Date</th>
-                        <th>Percent Off</th>
-                        <th>Max Discount</th>
-                        <th>Min Purchase</th>
-                    </tr>
-                </thead>
-            ";
-        echo "<tbody>";
-        foreach($promos as $promo){
-            echo "<tr>
-                    <td>$promo->promoType</td>
-                    <td>$promo->promoCode</td>
-                    <td>$promo->startDate</td>
-                    <td>$promo->endDate</td>
-                    <td>$promo->percentDiscount</td>
-                    <td>$promo->maxDiscount</td>
-                    <td>$promo->minPurchase</td>
-                </tr>";
-        }
-        echo "</tbody>";
-        echo "</table>";
+        echo json_encode($promos);
     }
     
 } catch (PDOException $e) {
-    echo $e->getMessage();
+    echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
 }

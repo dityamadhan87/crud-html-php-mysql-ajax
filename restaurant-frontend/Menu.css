@@ -2,6 +2,17 @@ body{
     display: flex;
 }
 
+#menuTable {
+    width: 30%; 
+    border-collapse: collapse;
+}
+
+#menuTable th, #menuTable td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left; 
+}
+
 #menuForm {
     display: flex;
     flex-direction: column;

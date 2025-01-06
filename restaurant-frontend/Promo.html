@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./Promo.css">
 </head>
 <body>
-    <form id="promoForm" action="../admin-backend/AdminPromo.php" method="get">
+    <form id="promoForm">
         <label>Promo Type</label>
         <select name="promoType">
             <option value="delivery">DELIVERY</option>
@@ -29,7 +29,33 @@
         <button type="submit" name="action" value="create">Create</button>
         <button type="submit" name="action" value="delete">Delete</button>
         <button type="submit" name="action" value="update">Update</button>
-        <button type="submit" name="action" value="read">Read</button>
+        <button type="button" id="read-button">Read</button>
+        <button type="button" onclick="clearTable()">Clear</button>
     </form>
+
+    <script>
+        const clearTable = () => {
+            const promoTable = document.getElementById("promoTable").querySelector("tbody");
+            promoTable.innerHTML = "";
+        }
+    </script>
+
+    <table id="promoTable">
+        <thead>
+            <tr>
+                <th>Promo Type</th>
+                <th>Promo Code</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Percent Discount</th>
+                <th>Max Discount</th>
+                <th>Min Purchase</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data akan muncul di sini -->
+        </tbody>
+    </table>
+    <script src="../promo-backend/Promo.js"></script>
 </body>
 </html>

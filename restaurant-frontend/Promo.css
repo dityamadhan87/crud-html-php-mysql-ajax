@@ -2,6 +2,17 @@ body{
     display: flex;
 }
 
+#promoTable {
+    width: 50%; 
+    border-collapse: collapse;
+}
+
+#promoTable th, #promoTable td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left; 
+}
+
 #promoForm {
     display: flex;
     flex-direction: column;

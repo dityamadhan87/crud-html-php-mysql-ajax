@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./Menu.css">
 </head>
+
 <body>
-    <form id="menuForm" action="../admin-backend/AdminMenu.php" method="get">
+    <form id="menuForm">
         <label>Menu ID</label>
         <input type="text" name="menuId">
         <label>Menu Name</label>
@@ -17,7 +19,30 @@
         <button type="submit" name="action" value="create">Create</button>
         <button type="submit" name="action" value="delete">Delete</button>
         <button type="submit" name="action" value="update">Update</button>
-        <button type="submit" name="action" value="read">Read</button>
+        <button type="button" id="read-button">Read</button>
+        <button type="button" onclick="clearTable()">Clear</button>
     </form>
+
+    <script>
+        const clearTable = () => {
+            const menuTable = document.getElementById("menuTable").querySelector("tbody");
+            menuTable.innerHTML = "";
+        }
+    </script>
+
+    <table id="menuTable">
+        <thead>
+            <tr>
+                <th>Menu ID</th>
+                <th>Menu Name</th>
+                <th>Menu Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data akan muncul di sini -->
+        </tbody>
+    </table>
+    <script src="../menu-backend/Menu.js"></script>
 </body>
+
 </html>

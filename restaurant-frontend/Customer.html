@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer</title>
     <link rel="stylesheet" href="./Customer.css">
 </head>
+
 <body>
-    <form id="customerForm" action="../admin-backend/AdminCustomer.php" method="get">
+    <form id="customerForm">
         <label>Customer Type</label>
         <select name="customerType">
             <option value="guest">GUEST</option>
@@ -24,7 +26,32 @@
         <button type="submit" name="action" value="create">Create</button>
         <button type="submit" name="action" value="delete">Delete</button>
         <button type="submit" name="action" value="update">Update</button>
-        <button type="submit" name="action" value="read">Read</button>
+        <button type="button" id="read-button">Read</button>
+        <button type="button" onclick="clearTable()">Clear</button>
     </form>
+
+    <script>
+        const clearTable = () => {
+            const customerTable = document.getElementById("customerTable").querySelector("tbody");
+            customerTable.innerHTML = "";
+        }
+    </script>
+
+    <table id="customerTable">
+        <thead>
+            <tr>
+                <th>Customer Type</th>
+                <th>Customer ID</th>
+                <th>Customer Name</th>
+                <th>Member Date</th>
+                <th>Opening Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data akan muncul di sini -->
+        </tbody>
+    </table>
+    <script src="../customer-backend/Customer.js"></script>
 </body>
+
 </html>
